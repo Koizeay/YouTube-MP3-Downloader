@@ -1,3 +1,4 @@
+from sys import exit
 from pytube import YouTube
 from pydub import AudioSegment
 import os
