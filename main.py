@@ -39,7 +39,9 @@ try:
             pass
 
         print("Download complete")
+        input("Press Enter to exit...")
     except:
         print("Error ! Please check you input.")
+        input("Press Enter to exit...")
 except KeyboardInterrupt:
     exit()
