@@ -7,6 +7,7 @@ Download the .exe file from here https://github.com/Koizeay/YouTube-MP3-Download
 Windows : Double-click on it.\
 Linux (i.e. Ubuntu) : Make it executable and run it in a terminal.
 ### `.py` version
+Download the .py file from here https://github.com/Koizeay/YouTube-MP3-Downloader/releases/ \
 You need Python 3 on your computer\
 Then install these packages with pip
 ```
