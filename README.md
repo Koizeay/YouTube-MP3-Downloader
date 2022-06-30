@@ -1,14 +1,15 @@
 # YouTube-MP3-Downloader
 A simple YouTube to MP3 downloader in Python
-
+## Which version should I choose ?
+The `.exe` version (it's compatible with Windows and Linux, *not tested on macOS*).
 ## How to install ?
 ### `.exe` version
 Download the .exe file from here https://github.com/Koizeay/YouTube-MP3-Downloader/releases/ \
-Windows : Double-click on it.\
-Linux (e.g. Ubuntu) : Make it executable and run it in a terminal.
+**Windows :** Double-click on it.\
+**Linux (e.g. Ubuntu) :** Make it executable and run it in a terminal (you need to have ffmpeg).
 ### `.py` version
 Download the .py file from here https://github.com/Koizeay/YouTube-MP3-Downloader/releases/ \
-You need Python 3 on your computer\
+You need Python 3 and ffmpeg on your computer\
 Then install these packages with pip
 ```
 pytube~=12.1.0
