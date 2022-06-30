@@ -1,16 +1,31 @@
+import warnings
+
+warnings.filterwarnings("ignore")
+
+import sys
 from sys import exit
 from pytube import YouTube
 from pydub import AudioSegment
 import os
 
 try:
+
+    def getFilesPath():
+        try:
+            basePath = sys._MEIPASS
+        except Exception:
+            basePath = os.path.abspath(".")
+
+        return basePath
+
+
     bitrates = []
     bitrate = None
 
-    yt_url = input("YouTube URL : ")
+    youtubeUrl = input("YouTube URL : ")
 
     try:
-        yt = YouTube(yt_url)
+        yt = YouTube(youtubeUrl)
 
         for vid in yt.streams.filter(only_audio=True):
             bitrates.append(vid.abr.replace("kbps", ""))
@@ -23,17 +38,24 @@ try:
             bitrate = max(bitrates)
 
         video = yt.streams.filter(only_audio=True, bitrate=bitrate + "kbps").first()
-        yt_title = yt.title
+        youtubeTitle = yt.title
 
-        print("Downloading \"" + yt_title + "\" in " + bitrate + " kbps")
-        out_file = video.download(output_path=".", filename="_music.tmp", skip_existing=False)
+        print("Downloading \"" + youtubeTitle + "\" in " + bitrate + " kbps")
+        outFile = video.download(output_path=".", filename="_music.tmp", skip_existing=False)
 
         try:
             os.remove("./_music.mp3")
         except:
             pass
 
-        AudioSegment.from_file("./_music.tmp").export("./_music.mp3", format="mp3")
+        defaultWorkingDir = os.getcwd()
+        os.chdir(getFilesPath())
+
+        AudioSegment.from_file(defaultWorkingDir + "/_music.tmp").export(defaultWorkingDir + "/_music.mp3",
+                                                                         format="mp3")
+
+        os.chdir(defaultWorkingDir)
+
         try:
             os.remove("./_music.tmp")
         except:
@@ -42,7 +64,7 @@ try:
         print("Download complete")
         input("Press Enter to exit...")
     except:
-        print("Error ! Please check you input.")
+        print("Error, Please check you input and your internet connection.")
         input("Press Enter to exit...")
 except KeyboardInterrupt:
     exit()
